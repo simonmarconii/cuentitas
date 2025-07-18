@@ -94,11 +94,11 @@ function App() {
                     <Input placeholder='Nombre' className='' type='text' value={name} onChange={handleNameChange} required />
                   </div>
                   <div className=''>
-                    <Input placeholder='Monto' className='' type='text' value={amount} onChange={handleAmountChange} required />
+                    <Input placeholder='Monto' className='' type='number' value={amount} onChange={handleAmountChange} required />
                   </div>
                   <div className='flex justify-center gap-5'>
-                    <Button className='border' type='submit'>Agregar</Button>
-                    <Button className='border' type='button' onClick={restart}>Limpiar</Button>
+                    <Button type='submit'>Agregar</Button>
+                    <Button type='button' onClick={restart}>Limpiar</Button>
                   </div>
                 </div>
               </form>
@@ -118,7 +118,7 @@ function App() {
               </div>
             </div>
             <div className=''>
-              <Button className='boder' onClick={calculate}>Calcular</Button>
+              <Button onClick={calculate}>Calcular</Button>
             </div>
             <div>
               {transfer?.map((value, index) => (
