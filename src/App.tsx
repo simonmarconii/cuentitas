@@ -75,14 +75,14 @@ function App() {
               <form onSubmit={handleSubmit} className={cn('border rounded-xl', 'formBox')}>
                 <div className='grid gap-5'>
                   <div className=''>
-                    <Input placeholder='Name' className='' type='text' value={name} onChange={handleNameChange} />
+                    <Input placeholder='Nombre' className='' type='text' value={name} onChange={handleNameChange} />
                   </div>
                   <div className=''>
-                    <Input placeholder='Amount' className='' type='text' value={amount} onChange={handleAmountChange} />
+                    <Input placeholder='Monto' className='' type='text' value={amount} onChange={handleAmountChange} />
                   </div>
                   <div className='flex justify-center gap-5'>
-                    <Button className='border' type='submit'>Add</Button>
-                    <Button className='border' type='button' onClick={restart}>Restart</Button>
+                    <Button className='border' type='submit'>Agregar</Button>
+                    <Button className='border' type='button' onClick={restart}>Limpiar</Button>
                   </div>
                 </div>
               </form>
@@ -96,13 +96,13 @@ function App() {
               ))}
             </div>
             <div className=''>
-              <Button className='border' onClick={calculate}>Calculate</Button>
+              <Button className='border' onClick={calculate}>Calcular</Button>
             </div>
             <div>
               {transfer?.map((value, index) => (
                 <div key={index} className='flex gap-1'>
-                  <h1>{`From ${value.from.toUpperCase()}`}</h1>
-                  <h1>{`to ${value.to.toUpperCase()}`}</h1>
+                  <h1>{`${value.from.toUpperCase()}`}</h1>
+                  <h1>{`debe a ${value.to.toUpperCase()}`}</h1>
                   <h1>{`$${value.amount}`}</h1>
                 </div>
               ))}
