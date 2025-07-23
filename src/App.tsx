@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './index.css'
-import calculateTransfers from './utils/calculateTransfersTo'
 import { Input } from './components/ui/input'
 import { cn } from './lib/utils'
 import { Button } from './components/ui/button'
@@ -63,9 +62,18 @@ function App() {
     setTransfer([...[]])
   }
 
-  const calculate = () => {
-    const transfer = calculateTransfers(persons)
-    setTransfer(transfer)
+  const calculate = async () => {
+    await fetch('http://localhost:3001/api/transfer', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(persons)
+    })
+      .then(response => response.json())
+      .then(data => setTransfer(data))
+      .catch(error => console.error('Error:', error));
+    // setTransfer(transfer)
   }
 
   const eliminate = (indexToRemove: number) => {
@@ -109,7 +117,7 @@ function App() {
                   <h1>{value.name.toUpperCase()}</h1>
                   <h1>{`$${value.amount.toUpperCase()}`}</h1>
                   <div className='cursor-pointer'>
-                    <X size={14} className='text-destructive' onClick={() => eliminate(index)}/>
+                    <X size={14} className='text-destructive' onClick={() => eliminate(index)} />
                   </div>
                 </div>
               ))}
